@@ -13,6 +13,13 @@ body {
     color: #333;
 }
 
+/* Conteneur global */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 /* En-tête et navigation */
 header {
     background: #004a99;
@@ -45,6 +52,13 @@ nav {
     color: #ffcc00;
 }
 
+/* Bouton pour le menu mobile */
+.nav-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
 /* Sections */
 section {
     padding: 40px 20px;
@@ -60,6 +74,21 @@ section {
     margin-bottom: 20px;
 }
 
+/* Flexbox pour services et à propos */
+.flex-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.flex-item {
+    flex: 1 1 calc(33.333% - 20px);
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
 /* Pied de page */
 footer {
     background: #004a99;
@@ -69,6 +98,78 @@ footer {
 }
 
 /* Styles responsives */
+
+/* Tablettes */
+@media (max-width: 1024px) {
+    nav .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #004a99;
+        position: absolute;
+        top: 60px;
+        left: 0;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    .flex-item {
+        flex: 1 1 calc(50% - 20px);
+    }
+}
+
+/* Petits écrans (mobiles) */
 @media (max-width: 768px) {
+    nav {
+        position: relative;
+    }
+
     .nav-links {
-        di
+        display: none;
+    }
+
+    .nav-links.active {
+        display: flex;
+        flex-direction: column;
+    }
+
+    nav .logo {
+        cursor: pointer;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    /* Réduction de la taille des sections */
+    section {
+        padding: 20px 10px;
+    }
+
+    .flex-item {
+        flex: 1 1 100%;
+    }
+}
+
+/* Très grands écrans (Desktop HD) */
+@media (min-width: 1440px) {
+    .container {
+        max-width: 1400px;
+    }
+
+    body {
+        font-size: 18px;
+    }
+
+    nav {
+        padding: 20px 40px;
+    }
+}
+
